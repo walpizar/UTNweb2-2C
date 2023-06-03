@@ -21,35 +21,50 @@ class ProductosController {
   };
 
   static getById = async (req: Request, resp: Response) => {
-   
     try {
-        const id = parseInt(req.params["id"]);
-    
-        if(!id){
-            return resp.status(404).json({ mensaje: "No se indica el ID" });
-        }
-    
-        const productosRepo = AppDataSource.getRepository(Producto);
-    
-        const producto= await productosRepo.findOne({where:{id}})
-    
-    
-        if(!producto){
-            return resp.status(404).json({ mensaje: "No se encontro el producto con ese ID" });
-        }
-    
-        return resp.status(200).json(producto);
-    
+      const id = parseInt(req.params["id"]);
+
+      if (!id) {
+        return resp.status(404).json({ mensaje: "No se indica el ID" });
+      }
+
+      const productosRepo = AppDataSource.getRepository(Producto);
+      
+      let producto;
+      try {
+        producto = await productosRepo.findOneOrFail({ where: { id } });
+      } catch (error) {
+        return resp
+        .status(404)
+        .json({ mensaje: "No se encontro el producto con ese ID" });
+      }
+      
+
+      // if (!producto) {
+      //   return resp
+      //     .status(404)
+      //     .json({ mensaje: "No se encontro el producto con ese ID" });
+      // }
+
+      return resp.status(200).json(producto);
     } catch (error) {
-        return resp.status(400).json({ mensaje: error });
+      return resp.status(400).json({ mensaje: error });
     }
-   
-    
   };
 
+  static add = async (req: Request, resp: Response) => {
+    try {
 
 
-  static add = async (req: Request, resp: Response) => {};
+
+
+    } catch (error) {
+      return resp.status(400).json({ mensaje: error });
+    }
+
+    return resp.status(200).json({ mensaje: "create" });
+  };
+
   static update = async (req: Request, resp: Response) => {};
   static delete = async (req: Request, resp: Response) => {};
 }

@@ -5,7 +5,7 @@ const routes= Router();
 
 routes.get('', ProductosController.getAll);
 routes.get('/getById/:id', ProductosController.getById);
-routes.post('create',ProductosController.add);
+routes.post('',ProductosController.add);
 
 
 export default routes;
