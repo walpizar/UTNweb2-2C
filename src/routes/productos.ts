@@ -3,7 +3,8 @@ import ProductosController from "../controller/ProductosController";
 
 const routes= Router();
 
-routes.get('getAll', ProductosController.getAll);
+routes.get('', ProductosController.getAll);
+routes.get('/getById/:id', ProductosController.getById);
 routes.post('create',ProductosController.add);
 
 
