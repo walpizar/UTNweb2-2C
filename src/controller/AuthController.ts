@@ -29,7 +29,7 @@ class AuthController {
         .json({ mensaje: "Usuario o contraseña incorrecta." });
     }
 
-    const token = jwt.sign({ cedula: usuario.cedula }, "inaKey1234", {
+    const token = jwt.sign({ cedula: usuario.cedula }, "utnKey1234", {
       expiresIn: "5m",
     });
 

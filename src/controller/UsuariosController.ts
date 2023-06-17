@@ -30,9 +30,9 @@ class UsuariosController {
         req.body;
 
       // typescript
-      let fecha: Date;
+      const fecha = new Date();
 
-      let usuario: Usuarios;
+      let usuario = new Usuarios();
       usuario.cedula = cedula;
       usuario.nombre = nombre;
       usuario.apellido1 = apellido1;

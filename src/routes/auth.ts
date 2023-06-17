@@ -3,6 +3,6 @@ import AuthController from "../controller/AuthController";
 
 const routes = Router();
 
-routes.get("/login", AuthController.login);
+routes.post("/login", AuthController.login);
 
 export default routes;

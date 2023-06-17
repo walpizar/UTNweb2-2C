@@ -4,8 +4,8 @@ import auth from "./auth";
 import usuarios from "./usuarios";
 const routes = Router();
 
-routes.use("/Productos", producto);
-routes.use("/Auth", auth);
-routes.use("/Usuarios", usuarios);
+routes.use("/productos", producto);
+routes.use("/auth", auth);
+routes.use("/usuarios", usuarios);
 
 export default routes;
