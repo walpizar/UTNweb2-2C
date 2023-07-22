@@ -1,5 +1,12 @@
 import { IsEmail, IsNotEmpty, MaxLength, maxLength } from "class-validator";
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { DetalleFactura } from "./DetalleFactura";
 
 @Entity()
 export class Producto {
@@ -19,4 +26,7 @@ export class Producto {
   fechaIngreso: Date;
   @Column()
   estado: boolean;
+
+  @OneToMany(() => DetalleFactura, (detalle) => detalle.producto)
+  detallesFactura: DetalleFactura[];
 }
